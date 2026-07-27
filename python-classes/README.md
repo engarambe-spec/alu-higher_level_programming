@@ -7,10 +7,10 @@ instance methods — built incrementally through a Square class.
 ## Learning Objectives
 
 - How to define a class in Python
-- Private instance attributes and name mangling
-- Type and value validation with TypeError and ValueError
+- Private instance attributes and name mangling (`__size` -> `_Square__size`)
+- Type and value validation with `TypeError` and `ValueError`
 - Properties: getters and setters
-- Writing instance methods (area, my_print)
+- Writing instance methods (`area`, `my_print`)
 
 ## Files
 

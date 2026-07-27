@@ -5,15 +5,11 @@
 class Square:
     """Represents a square"""
 
-    def _init_(self, size=0):
+    def __init__(self, size=0):
         """Initializes a new Square
 
         Args:
             size: the size of the square
-
-        Raises:
-            TypeError: if size is not an integer
-            ValueError: if size is less than 0
         """
         self.size = size
 
@@ -41,7 +37,7 @@ class Square:
 
     def area(self):
         """Returns the current square area"""
-        return self._size * self._size
+        return self.__size * self.__size
 
     def my_print(self):
         """Prints the square with the character #"""
