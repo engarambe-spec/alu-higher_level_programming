@@ -8,7 +8,7 @@ class Rectangle:
     number_of_instances = 0
     print_symbol = "#"
 
-    def _init_(self, width=0, height=0):
+    def __init__(self, width=0, height=0):
         """Initializes a new Rectangle
 
         Args:
@@ -65,27 +65,27 @@ class Rectangle:
 
     def area(self):
         """Returns the area of the rectangle"""
-        return self._width * self._height
+        return self.__width * self.__height
 
     def perimeter(self):
         """Returns the perimeter of the rectangle"""
-        if self._width == 0 or self._height == 0:
+        if self.__width == 0 or self.__height == 0:
             return 0
-        return 2 * (self._width + self._height)
+        return 2 * (self.__width + self.__height)
 
-    def _str_(self):
+    def __str__(self):
         """Returns the rectangle printed with the print_symbol character(s)"""
-        if self._width == 0 or self._height == 0:
+        if self.__width == 0 or self.__height == 0:
             return ""
         rows = [str(self.print_symbol) * self.__width
                 for _ in range(self.__height)]
         return "\n".join(rows)
 
-    def _repr_(self):
+    def __repr__(self):
         """Returns a string representation to recreate the rectangle"""
-        return "Rectangle({}, {})".format(self._width, self._height)
+        return "Rectangle({}, {})".format(self.__width, self.__height)
 
-    def _del_(self):
+    def __del__(self):
         """Prints a message when an instance is deleted"""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
