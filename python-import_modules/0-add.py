@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Program that imports add from add_0 and prints the result"""
 from add_0 import add
 
 if __name__ == "__main__":

@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""Module that defines basic math functions"""
+
+
 def add(a, b):
     """My addition function
 

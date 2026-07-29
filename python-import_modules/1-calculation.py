@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Program that does some maths using calculator_1 functions"""
 from calculator_1 import add, sub, mul, div
 
 if __name__ == "__main__":
