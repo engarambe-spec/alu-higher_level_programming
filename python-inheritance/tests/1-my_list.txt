@@ -1,63 +1,41 @@
-
 The ``1-my_list`` module
-
 ========================
 
+Using ``MyList``
+-----------------
 
-
-Using MyList
-
-------------
-
-::
-
-
+Import the class:
 
     >>> MyList = __import__('1-my_list').MyList
 
-
-
-Create a MyList and append elements::
-
-
+Create an empty list and append integers:
 
     >>> my_list = MyList()
-
     >>> my_list.append(1)
-
     >>> my_list.append(4)
-
     >>> my_list.append(2)
-
     >>> my_list.append(3)
-
     >>> my_list.append(5)
-
     >>> print(my_list)
-
     [1, 4, 2, 3, 5]
 
-
-
-print_sorted() prints a sorted copy, without modifying the original::
-
-
+Printing sorted does not change the underlying order:
 
     >>> my_list.print_sorted()
-
     [1, 2, 3, 4, 5]
-
     >>> print(my_list)
-
     [1, 4, 2, 3, 5]
 
+An empty MyList prints sorted as an empty list:
 
-
-An empty list prints as an empty list::
-
-
-
-    >>> MyList().print_sorted()
-
+    >>> empty = MyList()
+    >>> empty.print_sorted()
     []
 
+MyList behaves like a normal list otherwise:
+
+    >>> nums = MyList([3, 1, 2])
+    >>> len(nums)
+    3
+    >>> nums.print_sorted()
+    [1, 2, 3]
