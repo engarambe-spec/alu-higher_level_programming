@@ -1,0 +1,73 @@
+The ``0-add_integer`` module
+=============================
+
+Using add_integer
+------------------
+::
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Adding two positive integers::
+
+    >>> add_integer(1, 2)
+    3
+
+Adding a positive and a negative integer::
+
+    >>> add_integer(100, -2)
+    98
+
+Using the default value for b::
+
+    >>> add_integer(2)
+    100
+
+Floats are cast to integers before addition::
+
+    >>> add_integer(100.3, -2)
+    98
+
+Both floats::
+
+    >>> add_integer(1.9, 2.9)
+    3
+
+Negative numbers::
+
+    >>> add_integer(-5, -5)
+    -10
+
+Zero values::
+
+    >>> add_integer(0, 0)
+    0
+
+A non-number second argument raises TypeError::
+
+    >>> add_integer(4, "School")
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+A non-number first argument raises TypeError::
+
+    >>> add_integer("School", 4)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+None as the first argument raises TypeError::
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+A list argument raises TypeError::
+
+    >>> add_integer([1, 2])
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+A boolean argument raises TypeError::
+
+    >>> add_integer(True, 2)
+    Traceback (most recent call last):
+    TypeError: a must be an integer

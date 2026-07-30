@@ -1,0 +1,65 @@
+The ``5-text_indentation`` module
+====================================
+
+Using text_indentation
+-------------------------
+::
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Text with a period, question mark, and colon::
+
+    >>> text_indentation("Hello. How are you? Fine: thanks.")
+    Hello.
+    <BLANKLINE>
+    How are you?
+    <BLANKLINE>
+    Fine:
+    <BLANKLINE>
+    thanks.
+    <BLANKLINE>
+
+Text ending without punctuation prints on its own, no extra newline::
+
+    >>> text_indentation("No punctuation here")
+    No punctuation here
+
+An empty string prints nothing::
+
+    >>> text_indentation("")
+
+Multiple spaces around punctuation are trimmed::
+
+    >>> text_indentation("Hi.   Bye?")
+    Hi.
+    <BLANKLINE>
+    Bye?
+    <BLANKLINE>
+
+Consecutive punctuation marks each get their own line::
+
+    >>> text_indentation("Wait...")
+    Wait.
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+
+A non-string argument raises TypeError::
+
+    >>> text_indentation(12)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+A None argument raises TypeError::
+
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+A list argument raises TypeError::
+
+    >>> text_indentation(["Hello."])
+    Traceback (most recent call last):
+    TypeError: text must be a string
