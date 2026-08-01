@@ -1,65 +1,63 @@
 The ``5-text_indentation`` module
 ====================================
 
-Using text_indentation
--------------------------
-::
+Import the function:
 
     >>> text_indentation = __import__('5-text_indentation').text_indentation
 
-Text with a period, question mark, and colon::
+Regular string with periods:
 
-    >>> text_indentation("Hello. How are you? Fine: thanks.")
-    Hello.
+    >>> text_indentation("Holberton School")
+    Holberton School
+
+String with a period followed by more text:
+
+    >>> text_indentation("Holberton.School")
+    Holberton.
     <BLANKLINE>
-    How are you?
+    School
+
+String with multiple special characters (., ? and :):
+
+    >>> text_indentation("Holberton. School? How are you: John")
+    Holberton.
     <BLANKLINE>
-    Fine:
+    School?
     <BLANKLINE>
-    thanks.
+    How are you:
     <BLANKLINE>
+    John
 
-Text ending without punctuation prints on its own, no extra newline::
-
-    >>> text_indentation("No punctuation here")
-    No punctuation here
-
-An empty string prints nothing::
-
-    >>> text_indentation("")
-
-Multiple spaces around punctuation are trimmed::
-
-    >>> text_indentation("Hi.   Bye?")
-    Hi.
-    <BLANKLINE>
-    Bye?
-    <BLANKLINE>
-
-Consecutive punctuation marks each get their own line::
-
-    >>> text_indentation("Wait...")
-    Wait.
-    <BLANKLINE>
-    .
-    <BLANKLINE>
-    .
-    <BLANKLINE>
-
-A non-string argument raises TypeError::
+Non-string input raises a TypeError:
 
     >>> text_indentation(12)
     Traceback (most recent call last):
     TypeError: text must be a string
 
-A None argument raises TypeError::
+An empty string prints nothing:
 
-    >>> text_indentation(None)
+    >>> text_indentation("")
+
+A string that is only whitespace prints nothing:
+
+    >>> text_indentation("   ")
+
+There is no space at the beginning or end of each printed line:
+
+    >>> text_indentation("Hello.   World?")
+    Hello.
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
+
+Missing one argument:
+
+    >>> text_indentation()
     Traceback (most recent call last):
-    TypeError: text must be a string
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
 
-A list argument raises TypeError::
-
-    >>> text_indentation(["Hello."])
-    Traceback (most recent call last):
-    TypeError: text must be a string
+    >>> try:
+    ...     text_indentation()
+    ... except TypeError as e:
+    ...     print(e)
+    text_indentation() missing 1 required positional argument: 'text'

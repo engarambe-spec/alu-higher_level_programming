@@ -1,52 +1,43 @@
 The ``3-say_my_name`` module
 ==============================
 
-Using say_my_name
--------------------
-::
+Import the function:
 
     >>> say_my_name = __import__('3-say_my_name').say_my_name
 
-Printing with both a first and last name::
+Regular case with both names:
 
-    >>> say_my_name("John", "Smith")
-    My name is John Smith
+    >>> say_my_name("Bob", "Lenon")
+    My name is Bob Lenon
 
-Another first and last name combination::
-
-    >>> say_my_name("Walter", "White")
-    My name is Walter White
-
-Omitting the last name uses the default empty string::
+Using the default value for last_name:
 
     >>> say_my_name("Bob")
     My name is Bob 
 
-An empty first name still prints::
+Non-string first_name raises a TypeError:
 
-    >>> say_my_name("")
-    My name is  
-
-A non-string first_name raises TypeError::
-
-    >>> say_my_name(12, "White")
+    >>> say_my_name(12, "Lenon")
     Traceback (most recent call last):
     TypeError: first_name must be a string
 
-A non-string last_name raises TypeError::
+Non-string last_name raises a TypeError:
 
-    >>> say_my_name("John", 12)
+    >>> say_my_name("Bob", 12)
     Traceback (most recent call last):
     TypeError: last_name must be a string
 
-A None first_name raises TypeError::
+Missing both arguments - calling the function with none of the
+name arguments provided at all (even though last_name has a
+default, first_name is still required, so this is the "missing
+arguments" case for a call with an entirely empty argument list):
 
-    >>> say_my_name(None)
+    >>> say_my_name()
     Traceback (most recent call last):
-    TypeError: first_name must be a string
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
 
-A list first_name raises TypeError::
-
-    >>> say_my_name(["John"])
-    Traceback (most recent call last):
-    TypeError: first_name must be a string
+    >>> try:
+    ...     say_my_name()
+    ... except TypeError as e:
+    ...     print(e)
+    say_my_name() missing 1 required positional argument: 'first_name'

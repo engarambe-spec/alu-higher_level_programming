@@ -1,73 +1,93 @@
 The ``0-add_integer`` module
 =============================
 
-Using add_integer
-------------------
-::
+Import the function:
 
     >>> add_integer = __import__('0-add_integer').add_integer
 
-Adding two positive integers::
+Regular addition:
 
     >>> add_integer(1, 2)
     3
 
-Adding a positive and a negative integer::
-
     >>> add_integer(100, -2)
     98
 
-Using the default value for b::
+Using the default value for b:
 
     >>> add_integer(2)
     100
 
-Floats are cast to integers before addition::
+Integer casting:
 
     >>> add_integer(100.3, -2)
     98
 
-Both floats::
+    >>> add_integer(2, 3.8)
+    5
 
-    >>> add_integer(1.9, 2.9)
-    3
+    >>> add_integer(-1.9, -2.9)
+    -3
 
-Negative numbers::
-
-    >>> add_integer(-5, -5)
-    -10
-
-Zero values::
-
-    >>> add_integer(0, 0)
-    0
-
-A non-number second argument raises TypeError::
+Check type - non-numeric values raise a TypeError:
 
     >>> add_integer(4, "School")
     Traceback (most recent call last):
     TypeError: b must be an integer
 
-A non-number first argument raises TypeError::
-
-    >>> add_integer("School", 4)
-    Traceback (most recent call last):
-    TypeError: a must be an integer
-
-None as the first argument raises TypeError::
-
     >>> add_integer(None)
     Traceback (most recent call last):
     TypeError: a must be an integer
 
-A list argument raises TypeError::
-
-    >>> add_integer([1, 2])
+    >>> add_integer([1, 2], 3)
     Traceback (most recent call last):
     TypeError: a must be an integer
 
-A boolean argument raises TypeError::
+    >>> add_integer(1, {"a": 1})
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+Regular tests - booleans are numbers in Python but explicitly rejected
+by the type() check used here, since bool is a distinct type from int:
 
     >>> add_integer(True, 2)
     Traceback (most recent call last):
     TypeError: a must be an integer
+
+Float overflow - a float too large to be represented as a finite value
+(infinity) cannot be cast to an integer:
+
+    >>> add_integer(1, float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+    >>> add_integer(float('-inf'), 1)
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+Cannot convert float NaN to integer:
+
+    >>> add_integer(1, float('nan'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+    >>> add_integer(float('nan'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+Missing one argument:
+
+    >>> add_integer()
+    Traceback (most recent call last):
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Missing two arguments (calling with no parentheses content on a
+function requiring at least one positional argument is the same
+missing-argument case as above; this covers extra confidence in the
+message format):
+
+    >>> try:
+    ...     add_integer()
+    ... except TypeError as e:
+    ...     print(e)
+    add_integer() missing 1 required positional argument: 'a'

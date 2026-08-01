@@ -1,13 +1,11 @@
 The ``4-print_square`` module
 ===============================
 
-Using print_square
---------------------
-::
+Import the function:
 
     >>> print_square = __import__('4-print_square').print_square
 
-Printing a square of size 4::
+A regular square:
 
     >>> print_square(4)
     ####
@@ -15,47 +13,46 @@ Printing a square of size 4::
     ####
     ####
 
-Printing a square of size 1::
+Size of 0 prints nothing:
+
+    >>> print_square(0)
+
+Negative size raises a ValueError:
+
+    >>> print_square(-2)
+    Traceback (most recent call last):
+    ValueError: size must be >= 0
+
+Non-integer size raises a TypeError:
+
+    >>> print_square("3")
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+A regular case of size 1:
 
     >>> print_square(1)
     #
 
-Printing a square of size 0 prints nothing::
-
-    >>> print_square(0)
-
-A negative size raises ValueError::
-
-    >>> print_square(-1)
-    Traceback (most recent call last):
-    ValueError: size must be >= 0
-
-A non-integer size raises TypeError::
-
-    >>> print_square("4")
-    Traceback (most recent call last):
-    TypeError: size must be an integer
-
-A float size raises TypeError, even if negative::
+A negative float raises a TypeError (not a ValueError), since the
+type check runs before the value check:
 
     >>> print_square(-2.5)
     Traceback (most recent call last):
     TypeError: size must be an integer
 
-A positive float size also raises TypeError::
-
     >>> print_square(3.5)
     Traceback (most recent call last):
     TypeError: size must be an integer
 
-A None size raises TypeError::
+Missing one argument:
 
-    >>> print_square(None)
+    >>> print_square()
     Traceback (most recent call last):
-    TypeError: size must be an integer
+    TypeError: print_square() missing 1 required positional argument: 'size'
 
-A boolean size raises TypeError::
-
-    >>> print_square(True)
-    Traceback (most recent call last):
-    TypeError: size must be an integer
+    >>> try:
+    ...     print_square()
+    ... except TypeError as e:
+    ...     print(e)
+    print_square() missing 1 required positional argument: 'size'
