@@ -74,6 +74,10 @@ A list is not an integer:
     Traceback (most recent call last):
     TypeError: age must be an integer
 
+    >>> bg.integer_validator("age", [3, 4])
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
 A boolean is not an integer, even though bool is a subclass of int in
 Python - the strict type() check used here treats them as different:
 
